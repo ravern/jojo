@@ -33,9 +33,9 @@ func NewBox(text string, width, height int) *Box {
 	return nil
 }
 
-// NewStyledBox creates a new box with the given styled text, width and
+// NewBoxStyled creates a new box with the given text with styles, width and
 // height.
-func NewStyledBox(text *StyledString, width, height int) *Box {
+func NewBoxStyled(text *StyledString, width, height int) *Box {
 	return nil
 }
 
@@ -54,13 +54,13 @@ func (c *Box) SetText(text string) {
 	c.text = NewStyledString(text)
 }
 
-// StyledText returns the styled text.
-func (c *Box) StyledText() *StyledString {
+// TextStyled returns the text with styles.
+func (c *Box) TextStyled() *StyledString {
 	return c.text
 }
 
-// SetStyledText sets the styled text.
-func (c *Box) SetStyledText(text *StyledString) {
+// SetTextStyled sets the text with styles.
+func (c *Box) SetTextStyled(text *StyledString) {
 	c.text = text
 }
 
