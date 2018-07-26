@@ -1,4 +1,4 @@
-package text
+package mojo
 
 // StyledString represents a string with styles.
 type StyledString struct {
