@@ -2,12 +2,15 @@ package text
 
 import "github.com/ravernkoh/mojo"
 
-// Box represents some text to be rendered.
+// Box represents a box containing some text.
 type Box struct {
 	HorizontalAlignment Alignment
 	VerticalAlignment   Alignment
 
-	text []rune
+	width  int
+	height int
+
+	content *StyledString
 }
 
 // Alignment represents the alignment of some text.
@@ -24,6 +27,11 @@ const (
 	AlignmentCenter
 	AlignmentTrailing
 )
+
+// NewBox creates a new box with the given content, width and height.
+func NewBox(content string, width, height int) *Box {
+	return nil
+}
 
 // Render renders some text.
 func (c *Box) Render(s *mojo.Screen) error {
@@ -43,4 +51,14 @@ func (c *Box) Width() int {
 // Height returns the preferred height.
 func (c *Box) Height() int {
 	return 0
+}
+
+// SetWidth sets the preferred width of the box.
+func (c *Box) SetWidth(width int) {
+	c.width = width
+}
+
+// SetHeight sets the preferred height of the box.
+func (c *Box) SetHeight(height int) {
+	c.height = height
 }
