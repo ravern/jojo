@@ -2,16 +2,13 @@ package mojo
 
 // Text represents some text to be rendered.
 type Text struct {
-	// HorizontalAlign is the horizontal alignment of text.
 	HorizontalAlign TextAlign
-
-	// VerticalAlign is the vertical alignment of text.
-	VerticalAlign TextAlign
+	VerticalAlign   TextAlign
 
 	text []rune
 }
 
-// TextAlign is the alignment of text.
+// TextAlign represents the alignment of some text.
 //
 // Text needs to be aligned both in the horizontal and vertical direction. The
 // alignment in both directions can be generalised as going from leading to

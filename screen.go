@@ -7,10 +7,6 @@ type Screen struct {
 	cells  [][]Cell
 }
 
-// Cell represents a single cell to be rendered to.
-type Cell struct {
-}
-
 // NewScreen creates a new screen with the given width and height.
 func NewScreen(width, height int) *Screen {
 	cells := make([][]Cell, height)

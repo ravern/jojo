@@ -2,16 +2,15 @@ package mojo
 
 // Stack represents a stack of components.
 type Stack struct {
-	// Direction is the direction of the stack.
 	Direction StackDirection
 
 	components []Component
 }
 
-// StackDirection is the direction of the stack.
+// StackDirection represents the direction of a stack.
 type StackDirection int
 
-// Possible directions of the stack.
+// Possible directions of a stack.
 const (
 	StackDirectionVertical StackDirection = iota
 	StackDirectionHorizontal
