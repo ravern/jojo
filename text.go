@@ -2,13 +2,13 @@ package mojo
 
 // Text represents a box containing some text.
 type Text struct {
-	HorizontalTextAlign TextAlign
-	VerticalTextAlign   TextAlign
+	HorizontalAlign TextAlign
+	VerticalAlign   TextAlign
 
 	width  int
 	height int
 
-	text *StyledString
+	text StyledString
 }
 
 // TextAlign represents the alignment of some text.
@@ -53,12 +53,12 @@ func (c *Text) SetText(text string) {
 }
 
 // TextStyled returns the text with styles.
-func (c *Text) TextStyled() *StyledString {
+func (c *Text) TextStyled() StyledString {
 	return c.text
 }
 
 // SetTextStyled sets the text with styles.
-func (c *Text) SetTextStyled(text *StyledString) {
+func (c *Text) SetTextStyled(text StyledString) {
 	c.text = text
 }
 
