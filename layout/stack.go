@@ -18,14 +18,9 @@ const (
 	StackDirectionHorizontal
 )
 
-// Render renders the stack of child components.
-func (c *Stack) Render(s *mojo.Screen) error {
+// Render renders the stack of child components onto the given screen.
+func (c *Stack) Render(s *mojo.Screen, e mojo.Event) error {
 	return nil
-}
-
-// Click responds to a click.
-func (c *Stack) Click(x, y int) bool {
-	return false
 }
 
 // Width returns the preferred width.

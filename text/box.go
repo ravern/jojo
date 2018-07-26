@@ -10,7 +10,7 @@ type Box struct {
 	width  int
 	height int
 
-	content *StyledString
+	text *StyledString
 }
 
 // Alignment represents the alignment of some text.
@@ -28,19 +28,40 @@ const (
 	AlignmentTrailing
 )
 
-// NewBox creates a new box with the given content, width and height.
-func NewBox(content string, width, height int) *Box {
+// NewBox creates a new box with the given text, width and height.
+func NewBox(text string, width, height int) *Box {
 	return nil
 }
 
-// Render renders some text.
-func (c *Box) Render(s *mojo.Screen) error {
+// NewStyledBox creates a new box with the given styled text, width and
+// height.
+func NewStyledBox(text *StyledString, width, height int) *Box {
 	return nil
 }
 
-// Click responds to a click.
-func (c *Box) Click(x, y int) bool {
-	return false
+// Render renders the text onto the given screen.
+func (c *Box) Render(s *mojo.Screen, e mojo.Event) error {
+	return nil
+}
+
+// Text returns the text.
+func (c *Box) Text() string {
+	return c.text.String()
+}
+
+// SetText sets the text.
+func (c *Box) SetText(text string) {
+	c.text = NewStyledString(text)
+}
+
+// StyledText returns the styled text.
+func (c *Box) StyledText() *StyledString {
+	return c.text
+}
+
+// SetStyledText sets the styled text.
+func (c *Box) SetStyledText(text *StyledString) {
+	c.text = text
 }
 
 // Width returns the preferred width.
@@ -48,14 +69,14 @@ func (c *Box) Width() int {
 	return 0
 }
 
-// Height returns the preferred height.
-func (c *Box) Height() int {
-	return 0
-}
-
 // SetWidth sets the preferred width of the box.
 func (c *Box) SetWidth(width int) {
 	c.width = width
+}
+
+// Height returns the preferred height.
+func (c *Box) Height() int {
+	return 0
 }
 
 // SetHeight sets the preferred height of the box.

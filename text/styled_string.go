@@ -8,3 +8,7 @@ type StyledString struct {
 func NewStyledString(s string) *StyledString {
 	return nil
 }
+
+func (s *StyledString) String() string {
+	return ""
+}

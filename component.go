@@ -1,5 +1,7 @@
 package mojo
 
+import "time"
+
 // Component represents a generic component to be rendered.
 type Component interface {
 	// Render renders onto the given screen.
@@ -9,14 +11,10 @@ type Component interface {
 	// collisions and space constraints. Therefore, the width and height of
 	// the given screen should be taken as the width and height to render
 	// to.
-	Render(*Screen) error
-
-	// Click responds to a click and returns whether a response was made.
 	//
-	// If a component does not respond to clicks or chooses not to respond,
-	// then false should be returned. Components that contain other
-	// components should foward to call to them if appropriate.
-	Click(x, y int) bool
+	// The event passed is the event that triggered the render. This can be
+	// anything from a time-based event, to a mouse click or key press.
+	Render(*Screen, Event) error
 
 	// Width returns the preferred width.
 	//
@@ -29,4 +27,14 @@ type Component interface {
 	// This is useful for situations like content wrapping or absolute
 	// widths. If there is no preferred height, 0 should be returned.
 	Height() int
+}
+
+// Event represents an event that triggered a render.
+type Event interface {
+	// Time is the time that the event occured.
+	//
+	// The time returned is sometimes used for event replaying/syncing.
+	// Therefore, events can be sent out of order. Components simply have
+	// to keep track of this timing if they depend on the time.
+	Time() time.Time
 }

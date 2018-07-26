@@ -8,6 +8,9 @@ type Screen struct {
 }
 
 // NewScreen creates a new screen with the given width and height.
+//
+// The size of a screen is immutable. Therefore, to resize a screen, simply
+// create a new screen and perform rendering again.
 func NewScreen(width, height int) *Screen {
 	cells := make([][]Cell, height)
 	for i := range cells {
@@ -21,14 +24,14 @@ func NewScreen(width, height int) *Screen {
 	}
 }
 
-// Subscreen returns a section at the given x and y with the given width and
+// Screen returns a section at the given x and y with the given width and
 // height.
 //
-// Rendering to the subscreen will also change the original screen, as they
-// both point to the same collection of cells internally.
+// Rendering to the resulting screen will also change the original screen, as
+// they both point to the same collection of cells internally.
 //
 // It is assumed that the coordinates are valid.
-func (s *Screen) Subscreen(x, y, width, height int) *Screen {
+func (s *Screen) Screen(x, y, width, height int) *Screen {
 	cells := make([][]Cell, height)
 	for i := range cells {
 		cells[i] = s.cells[y+i][x : x+width]
@@ -39,6 +42,20 @@ func (s *Screen) Subscreen(x, y, width, height int) *Screen {
 		height: height,
 		cells:  cells,
 	}
+}
+
+// Cell returns the cell at the given x and y.
+//
+// It is assumed that the coordinates are valid.
+func (s *Screen) Cell(x, y int) Cell {
+	return s.cells[y][x]
+}
+
+// SetCell sets the given cell at the given x and y.
+//
+// It is assumed that the coordinates are valid.
+func (s *Screen) SetCell(x, y int, c Cell) {
+	s.cells[y][x] = c
 }
 
 // Width returns the width.
