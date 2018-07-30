@@ -1,7 +1,5 @@
 package mojo
 
-import "time"
-
 // Component represents a generic component to be rendered.
 type Component interface {
 	// Render renders onto the given screen.
@@ -27,14 +25,4 @@ type Component interface {
 	// This is useful for situations like content wrapping or absolute
 	// widths. If there is no preferred height, 0 should be returned.
 	Height() int
-}
-
-// Event represents an event that triggered a render.
-type Event interface {
-	// Time is the time that the event occured.
-	//
-	// The time returned is sometimes used for event replaying/syncing.
-	// Therefore, events can be sent out of order. Components simply have
-	// to keep track of this timing if they depend on the time.
-	Time() time.Time
 }

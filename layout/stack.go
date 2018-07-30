@@ -1,10 +1,12 @@
 package mojo
 
+import "github.com/ravernkoh/mojo"
+
 // Stack represents a stack of components.
 type Stack struct {
 	Direction StackDirection
 
-	components []Component
+	components []mojo.Component
 }
 
 // StackDirection represents the direction of a stack.
@@ -17,7 +19,7 @@ const (
 )
 
 // Render renders the stack of child components onto the given screen.
-func (c *Stack) Render(s *Screen, e Event) error {
+func (c *Stack) Render(s *mojo.Screen, e mojo.Event) error {
 	return nil
 }
 

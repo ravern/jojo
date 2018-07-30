@@ -1,6 +1,10 @@
-package mojo
+package text
 
-import "strings"
+import (
+	"strings"
+
+	"github.com/ravernkoh/mojo"
+)
 
 // StyledString represents a string with styles.
 type StyledString []StyledStringSection
@@ -8,9 +12,9 @@ type StyledString []StyledStringSection
 // StyledStringSection represents a section of a string with styles.
 type StyledStringSection struct {
 	String     string
-	Foreground Color
-	Background Color
-	Attributes []Attribute
+	Foreground mojo.Color
+	Background mojo.Color
+	Attributes []mojo.Attribute
 }
 
 // NewStyledString creates a new string with styles wrapping the given string.
